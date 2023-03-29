@@ -18,16 +18,19 @@
 Add the following implementation dependency with the latest version of the adapter in the app-level `build.gradle` file:
 
 repositories {<br /> 
-    maven {url "https://github.com/Ad4GameTech/admob-adapter/raw/main" }<br /> 
+    maven {url "https://github.com/ad4game/a4g-admob/raw/main" }<br /> 
 }
 
-// ...<br /> 
-dependencies {<br /> 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])<br /> 
-    implementation 'com.google.android.gms:play-services-ads:21.4.0'<br /> 
-    **implementation 'com.Ad4game:admobmanager:1.0.7'**<br /> 
-}<br /> 
+```java
 // ...
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.gms:play-services-ads:21.4.0'
+    // ⬇ Ad4Game implementation
+    implementation 'com.Ad4game:admobmanager:1.0.7'
+} 
+// ...
+```
 
 **Usage**
 **GDPR Compliance**</br>
