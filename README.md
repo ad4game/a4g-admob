@@ -17,9 +17,11 @@
 
 Add the following implementation dependency with the latest version of the adapter in the app-level `build.gradle` file:
 
-repositories {<br /> 
-    maven {url "https://github.com/ad4game/a4g-admob/raw/main" }<br /> 
+```java
+repositories {
+    maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
 }
+```
 
 ```java
 // ...
