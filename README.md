@@ -21,7 +21,7 @@ Add the following implementation dependency with the latest version of the adapt
 repositories {
     maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
 }
-```java
+```
 
 ```java
 // ...
