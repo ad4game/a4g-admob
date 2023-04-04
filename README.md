@@ -7,9 +7,9 @@
  
 **Requirements**
 
-- Google Mobile Ads SDK 21.0.0 or higher
+- Google Mobile Ads SDK 22.0.0 or higher
 - Use Android Studio 3.2 or higher
-- A minSdkVersion of 19 or higher
+- A minSdkVersion of 21 or higher
 - A compileSdkVersion of 28 or higher
 
 **Installation**
@@ -21,7 +21,7 @@ Add the following implementation dependency with the latest version of the adapt
 repositories {
     maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
 }
-```
+```java
 
 ```java
 // ...
@@ -29,8 +29,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.gms:play-services-ads:21.4.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.0.7'
-} 
+    **implementation 'com.Ad4game:admobmanager:1.0.8'**
+}
 // ...
 ```
 
@@ -46,10 +46,7 @@ extras.putString("npa", "1");
 builder.addNetworkExtrasBundle(AdMobAdapter.class, extras);
 
 // Add this for Ad4Game
-builder.addNetworkExtrasBundle(type.equals("banner") ? AdmobCustomEventBanner.class :
-                type.equals("rewarded") ? AdmobCustomEventRewarded.class :
-                        AdmobCustomEventInterstitial.class,
-        extras);
+builder.addNetworkExtrasBundle(AdmobCustomEventManager.class, extras);
 ```
 
 **Configure mediation settings for your AdMob ad unit**
@@ -63,5 +60,4 @@ You need to add Ad4Game placements provided by the Ad4Game team to the mediation
 
 * Interstitial / Rewarded / Banner : com.ad4game.admobadapter
 
-**Parameter** : Ad4Game placement ids for each floor price provided by the Ad4Game team
-
+**Parameter** : Ad4Game Unit ID
