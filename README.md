@@ -61,3 +61,6 @@ You need to add Ad4Game placements provided by the Ad4Game team to the mediation
 * Interstitial / Rewarded / Banner : com.ad4game.admobadapter
 
 **Parameter** : Ad4Game Unit ID
+
+##  iOS
+<a href="https://github.com/ad4game/a4g-admob-ios">iOS documentation</a>
