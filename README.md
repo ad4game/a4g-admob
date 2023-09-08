@@ -62,5 +62,8 @@ You need to add Ad4Game placements provided by the Ad4Game team to the mediation
 
 **Parameter** : Ad4Game Unit ID
 
+## Unity Platform
+Use the unity package file located in the <a href="https://github.com/ad4game/a4g-admob/tree/main/unity_package">unity_package</a> folder to include Ad4Game adapters in your app/game.
+
 ##  iOS
 <a href="https://github.com/ad4game/a4g-admob-ios">iOS documentation</a>
