@@ -29,11 +29,10 @@ allprojects {
             // ...
             maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
         }
-
-        repositories {
-            // ...
-            maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
-        }
+    }
+    repositories {
+        // ...
+        maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
     }
 }
 // ...
