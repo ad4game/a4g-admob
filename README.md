@@ -7,9 +7,9 @@
  
 **Requirements**
 
-- Google Mobile Ads SDK 22.0.0 or higher
+- Google Mobile Ads SDK 20.0.0 or higher
 - Use Android Studio 3.2 or higher
-- A minSdkVersion of 21 or higher
+- A minSdkVersion of 19 or higher
 - A compileSdkVersion of 28 or higher
 
 **Installation**
@@ -17,19 +17,35 @@
 
 Add the following implementation dependency with the latest version of the adapter in the app-level `build.gradle` file:
 
+# build.gradle (Project)
 ```java
-repositories {
-    maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
+// ...
+allprojects {
+    buildscript {
+        // ...
+        repositories {
+            // ...
+            maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
+        }
+
+        repositories {
+            // ...
+            maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
+        }
+    }
 }
+// ...
 ```
 
+# build.gradle (Module)
 ```java
 // ...
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.android.gms:play-services-ads:21.4.0'
+    // required google ads
+    implementation 'com.google.android.gms:play-services-ads:22.2.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.0.8'
+    implementation 'com.Ad4game:admobmanager:1.1.1'
 }
 // ...
 ```
@@ -58,7 +74,7 @@ You need to add Ad4Game placements provided by the Ad4Game team to the mediation
 **Custom Event screen parameters**</br>
 **Class Name** : You can use the following parameters depending on the ad unit format of the mediation group.
 
-* Interstitial / Rewarded / Banner : com.ad4game.admobadapter
+* Interstitial / Rewarded / Banner / Native: com.ad4game.admobadapter.AdmobCustomEventManager
 
 **Parameter** : Ad4Game Unit ID
 
