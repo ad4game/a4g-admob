@@ -17,7 +17,9 @@
 
 Add the following implementation dependency with the latest version of the adapter in the app-level `build.gradle` file:
 
-# build.gradle (Project)
+# build.gradle (Project) -OR- in settings.gradle
+
+### build.gradle (Project):
 ```java
 // ...
 allprojects {
@@ -35,6 +37,16 @@ allprojects {
     }
 }
 // ...
+```
+### settings.gradle:
+```java
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        // ...
+        maven {url "https://github.com/ad4game/a4g-admob/raw/main" }
+    }
+}
 ```
 
 # build.gradle (Module)
