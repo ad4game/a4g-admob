@@ -17,7 +17,7 @@
 
 Add the following implementation dependency with the latest version of the adapter in the app-level `build.gradle` file:
 
-# build.gradle (Project) -OR- in settings.gradle
+## build.gradle (Project) -OR- in settings.gradle
 
 ### build.gradle (Project):
 ```java
@@ -48,7 +48,7 @@ dependencyResolutionManagement {
 }
 ```
 
-# build.gradle (Module)
+## build.gradle (Module)
 ```java
 // ...
 dependencies {
