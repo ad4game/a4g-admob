@@ -1,10 +1,11 @@
 # Integrate Ad4Game with Admob Mediation
+
 **Features**
 
-- [x] Banner
-- [x] Interstitial
-- [x] Rewarded
- 
+- [X] Banner
+- [X] Interstitial
+- [X] Rewarded
+
 **Requirements**
 
 - Google Mobile Ads SDK 20.0.0 or higher
@@ -13,6 +14,7 @@
 - A compileSdkVersion of 28 or higher
 
 **Installation**
+
 ### Import adapter into your app/game
 
 Add the following implementation dependency with the latest version of the adapter in the app-level `build.gradle` file:
@@ -20,6 +22,7 @@ Add the following implementation dependency with the latest version of the adapt
 ## build.gradle (Project) -OR- in settings.gradle
 
 ### build.gradle (Project):
+
 ```java
 // ...
 allprojects {
@@ -37,7 +40,9 @@ allprojects {
 }
 // ...
 ```
+
 ### settings.gradle:
+
 ```java
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -49,6 +54,7 @@ dependencyResolutionManagement {
 ```
 
 ## build.gradle (Module)
+
 ```java
 // ...
 dependencies {
@@ -56,13 +62,13 @@ dependencies {
     // required google ads
     implementation 'com.google.android.gms:play-services-ads:22.2.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.1.1'
+    implementation 'com.Ad4game:admobmanager:1.1.2'
 }
 // ...
 ```
 
 **Usage**
-**GDPR Compliance**</br>
+**GDPR Compliance**`</br>`
 
 If you are not using any Consent Management Platform to handle privacy issues and managing user consent with your own solution, you have to inform admob mediation and mediation partners about the consent. The following code snippet is sample for gdpr consent usage for admob mediation. If you already have the snippet like below you need to add all these extras bundles for the Ad4Game custom event adapter as well.
 
@@ -82,7 +88,7 @@ You need to add Ad4Game placements provided by the Ad4Game team to the mediation
 ![Alt text](./1679651879220.png)
 ![Alt text](./1679652018083.png)
 
-**Custom Event screen parameters**</br>
+**Custom Event screen parameters**`</br>`
 **Class Name** : You can use the following parameters depending on the ad unit format of the mediation group.
 
 * Interstitial / Rewarded / Banner / Native: com.ad4game.admobadapter.AdmobCustomEventManager
@@ -90,7 +96,9 @@ You need to add Ad4Game placements provided by the Ad4Game team to the mediation
 **Parameter** : Ad4Game Unit ID
 
 ## Unity Platform
-Use the unity package file located in the <a href="https://github.com/ad4game/a4g-admob/tree/main/unity_package">unity_package</a> folder to include Ad4Game adapters in your app/game.
+
+Use the unity package file located in the `<a href="https://github.com/ad4game/a4g-admob/tree/main/unity_package">`unity_package`</a>` folder to include Ad4Game adapters in your app/game.
 
 ##  iOS
-<a href="https://github.com/ad4game/a4g-admob-ios">iOS documentation</a>
+
+`<a href="https://github.com/ad4game/a4g-admob-ios">`iOS documentation`</a>`
