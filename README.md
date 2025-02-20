@@ -54,7 +54,7 @@ dependencyResolutionManagement {
 ```
 
 ## build.gradle (Module)
-
+⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.4**"
 ```java
 // ...
 dependencies {
@@ -62,7 +62,7 @@ dependencies {
     // required google ads
     implementation 'com.google.android.gms:play-services-ads:22.2.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.1.2'
+    implementation 'com.Ad4game:admobmanager:1.1.4'
 }
 // ...
 ```
