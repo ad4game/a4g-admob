@@ -8,10 +8,10 @@
 
 **Requirements**
 
-- Google Mobile Ads SDK 20.0.0 or higher
+- Google Mobile Ads SDK 24.1.0 or higher
 - Use Android Studio 3.2 or higher
 - A minSdkVersion of 19 or higher
-- A compileSdkVersion of 28 or higher
+- A compileSdkVersion of 34 or higher
 
 **Installation**
 
@@ -54,18 +54,32 @@ dependencyResolutionManagement {
 ```
 
 ## build.gradle (Module)
-⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.4**"
+⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.5**"
 ```java
 // ...
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // required google ads
-    implementation 'com.google.android.gms:play-services-ads:22.2.0'
+    implementation 'com.google.android.gms:play-services-ads:24.1.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.1.4'
+    implementation 'com.Ad4game:admobmanager:1.1.5'
 }
 // ...
 ```
+
+## Version 1.1.5 (Latest)
+
+**Bug Fixes:**
+- ✅ Fixed AdMob initialization timeout issues
+- ✅ Improved adapter initialization performance
+- ✅ Reduced initialization latency from 30+ seconds to 1-3 seconds
+- ✅ Enhanced compatibility with AdMob SDK 24.1.0
+- ✅ Better error handling and logging
+
+**Compatibility:**
+- AdMob SDK 24.1.0+
+- Android API 19+
+- Compile SDK 34+
 
 **Usage**
 **GDPR Compliance**</br>
