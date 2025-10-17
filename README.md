@@ -54,7 +54,7 @@ dependencyResolutionManagement {
 ```
 
 ## build.gradle (Module)
-⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.5**"
+⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.6**"
 ```java
 // ...
 dependencies {
@@ -62,19 +62,25 @@ dependencies {
     // required google ads
     implementation 'com.google.android.gms:play-services-ads:24.1.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.1.5'
+    implementation 'com.Ad4game:admobmanager:1.1.6'
 }
 // ...
 ```
 
-## Version 1.1.5 (Latest)
+## Version 1.1.6 (Latest)
+
+**New Features & Improvements:**
+- ✅ Enhanced ad loading performance and reliability
+- ✅ Improved error handling and diagnostic logging
+- ✅ Optimized memory usage during ad requests
+- ✅ Better integration with AdMob mediation waterfall
+- ✅ Updated SDK compatibility and stability improvements
 
 **Bug Fixes:**
-- ✅ Fixed AdMob initialization timeout issues
-- ✅ Improved adapter initialization performance
-- ✅ Reduced initialization latency from 30+ seconds to 1-3 seconds
-- ✅ Enhanced compatibility with AdMob SDK 24.1.0
-- ✅ Better error handling and logging
+- ✅ Fixed rare crashes during ad initialization
+- ✅ Resolved issues with concurrent ad requests
+- ✅ Improved handling of network connectivity changes
+- ✅ Fixed potential memory leaks in long-running sessions
 
 **Compatibility:**
 - AdMob SDK 24.1.0+
