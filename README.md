@@ -54,7 +54,7 @@ dependencyResolutionManagement {
 ```
 
 ## build.gradle (Module)
-⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.6**"
+⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.7**"
 ```java
 // ...
 dependencies {
@@ -62,12 +62,24 @@ dependencies {
     // required google ads
     implementation 'com.google.android.gms:play-services-ads:24.1.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.1.6'
+    implementation 'com.Ad4game:admobmanager:1.1.7'
 }
 // ...
 ```
 
-## Version 1.1.6 (Latest)
+## Version 1.1.7 (Latest)
+
+**Bug Fixes:**
+- ✅ Fixed crash on AdMob SDK 24.9.0 and 25.x caused by removed `onFailure(String)` API
+- ✅ All failure callbacks now use the `onFailure(AdError)` API required by modern AdMob
+- ✅ Fixed version string reporting (was incorrectly reporting 1.1.5)
+
+**Compatibility:**
+- AdMob SDK 24.0.0+
+- Android API 21+
+- Compile SDK 35+
+
+## Version 1.1.6
 
 **New Features & Improvements:**
 - ✅ Enhanced ad loading performance and reliability
