@@ -54,7 +54,7 @@ dependencyResolutionManagement {
 ```
 
 ## build.gradle (Module)
-⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.7**"
+⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.8**"
 ```java
 // ...
 dependencies {
@@ -62,12 +62,22 @@ dependencies {
     // required google ads
     implementation 'com.google.android.gms:play-services-ads:24.1.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.1.7'
+    implementation 'com.Ad4game:admobmanager:1.1.8'
 }
 // ...
 ```
 
-## Version 1.1.7 (Latest)
+## Version 1.1.8 (Latest)
+
+**Bug Fixes:**
+- ✅ Fixed banner ads pausing the host app/game on every refresh (every ~30s) with no matching resume. The banner's `AdListener.onAdImpression()` was incorrectly forwarding `onAdOpened()` on every impression instead of only on a real full-screen overlay open; `onAdOpened()` and `onAdImpression()` are now wired correctly.
+
+**Compatibility:**
+- AdMob SDK 24.0.0+
+- Android API 21+
+- Compile SDK 35+
+
+## Version 1.1.7
 
 **Bug Fixes:**
 - ✅ Fixed crash on AdMob SDK 24.9.0 and 25.x caused by removed `onFailure(String)` API
