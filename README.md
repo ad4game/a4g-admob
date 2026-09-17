@@ -67,6 +67,14 @@ dependencies {
 // ...
 ```
 
+## GMA Next-Gen SDK Support
+
+✅ **The Ad4Game adapter is fully compatible with the [GMA Next-Gen SDK](https://developers.google.com/admob/android/next-gen/quick-start).**
+
+The adapter implements the standard `com.google.android.gms.ads.mediation.Adapter` mediation interface. Google uses this same interface for mediation adapters under both the legacy Google Mobile Ads SDK and the new GMA Next-Gen SDK, so no adapter changes are required on our side. Apps that migrate their core ads dependency to `com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk` continue to load Ad4Game through the existing waterfall mediation configuration, using the same Custom Event class name:
+
+* Interstitial / Rewarded / Banner / Native: `com.ad4game.admobadapter.AdmobCustomEventManager`
+
 ## Version 1.1.8 (Latest)
 
 **Bug Fixes:**
