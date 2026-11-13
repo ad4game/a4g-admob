@@ -69,11 +69,16 @@ dependencies {
 
 ## GMA Next-Gen SDK Support
 
-✅ **The Ad4Game adapter is fully compatible with the [GMA Next-Gen SDK](https://developers.google.com/admob/android/next-gen/quick-start).**
+⚠️ **`com.Ad4game:admobmanager` (1.1.x, including 1.1.8) is NOT compatible with the [GMA Next-Gen SDK](https://developers.google.com/admob/android/next-gen/quick-start) (`com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk`).**
 
-The adapter implements the standard `com.google.android.gms.ads.mediation.Adapter` mediation interface. Google uses this same interface for mediation adapters under both the legacy Google Mobile Ads SDK and the new GMA Next-Gen SDK, so no adapter changes are required on our side. Apps that migrate their core ads dependency to `com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk` continue to load Ad4Game through the existing waterfall mediation configuration, using the same Custom Event class name:
+The adapter requires the legacy Google Mobile Ads SDK (`com.google.android.gms:play-services-ads`) at runtime: it depends on `play-services-ads` and loads ads through legacy classes such as `AdRequest`, `RewardedAd`, `AdManagerInterstitialAd` and `AdManagerAdView`, which the Next-Gen SDK does not include. As a result:
 
-* Interstitial / Rewarded / Banner / Native: `com.ad4game.admobadapter.AdmobCustomEventManager`
+* Adding both SDKs to the same app fails with Gradle **duplicate class** errors.
+* Excluding `play-services-ads` fails with R8 **missing class** errors.
+
+If your app uses the legacy Google Mobile Ads SDK, keep using `com.Ad4game:admobmanager` as described above; nothing changes for you.
+
+**Next-Gen support:** a separate artifact built for the GMA Next-Gen SDK, `com.Ad4game:admobmanager-nextgen`, is in development. It will keep the same Custom Event class name (`com.ad4game.admobadapter.AdmobCustomEventManager`), so no changes to your AdMob mediation configuration will be needed. This section will be updated when it is released.
 
 ## Version 1.1.8 (Latest)
 
