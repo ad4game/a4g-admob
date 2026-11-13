@@ -78,7 +78,44 @@ The adapter requires the legacy Google Mobile Ads SDK (`com.google.android.gms:p
 
 If your app uses the legacy Google Mobile Ads SDK, keep using `com.Ad4game:admobmanager` as described above; nothing changes for you.
 
-**Next-Gen support:** a separate artifact built for the GMA Next-Gen SDK, `com.Ad4game:admobmanager-nextgen`, is in development. It will keep the same Custom Event class name (`com.ad4game.admobadapter.AdmobCustomEventManager`), so no changes to your AdMob mediation configuration will be needed. This section will be updated when it is released.
+### Apps using the GMA Next-Gen SDK: `admobmanager-nextgen`
+
+Use the dedicated Next-Gen artifact **instead of** `com.Ad4game:admobmanager`:
+
+| Your app uses | Ad4Game artifact |
+|---|---|
+| `com.google.android.gms:play-services-ads` (legacy) | `com.Ad4game:admobmanager:1.1.8` |
+| `com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk` (Next-Gen) | `com.Ad4game:admobmanager-nextgen:1.0.0` |
+
+**Requirements:** GMA Next-Gen SDK 1.5.0 or higher, minSdkVersion 24 or higher.
+
+Add the same Maven repository as above, then in the app-level `build.gradle`:
+
+```java
+dependencies {
+    // GMA Next-Gen SDK (do NOT also add play-services-ads)
+    implementation 'com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.6.0'
+    // ⬇ Ad4Game implementation for Next-Gen
+    implementation 'com.Ad4game:admobmanager-nextgen:1.0.0'
+}
+```
+
+The Custom Event class name is unchanged, so your AdMob mediation configuration stays the same:
+
+* Interstitial / Rewarded / Banner / Native: `com.ad4game.admobadapter.AdmobCustomEventManager`
+
+⚠️ Never add both `admobmanager` and `admobmanager-nextgen` to the same app.
+
+## admobmanager-nextgen 1.0.0 (Latest Next-Gen)
+
+**New:**
+- ✅ First release for the GMA Next-Gen SDK (`ads-mobile-sdk`). Depends only on `ads-mobile-sdk`, with no `play-services-ads`, so it builds with R8 and has no duplicate classes.
+- ✅ Banner, Interstitial, Rewarded and Native, through the same `AdmobCustomEventManager` custom event class.
+- ✅ Each ad load completes exactly once (success, failure or 10-second timeout), so the mediation waterfall always moves on correctly.
+
+**Compatibility:**
+- GMA Next-Gen SDK 1.5.0+ (tested with 1.6.0)
+- Android API 24+
 
 ## Version 1.1.8 (Latest)
 
