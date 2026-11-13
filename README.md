@@ -189,7 +189,12 @@ You need to add Ad4Game placements provided by the Ad4Game team to the mediation
 
 ## Unity Platform
 
-Use the unity package file located in the <a href="https://github.com/ad4game/a4g-admob/tree/main/unity_package">unity_package</a> folder to include Ad4Game adapters in your app/game.
+Use the unity package file located in the <a href="https://github.com/ad4game/a4g-admob/tree/main/unity_package">unity_package</a> folder to include Ad4Game adapters in your app/game:
+
+* `Ad4Game-1.0.3.unitypackage`: Google Mobile Ads Unity plugin with the legacy Android SDK (default).
+* `Ad4Game-NextGen-1.0.0.unitypackage`: Google Mobile Ads Unity plugin with the GMA Next-Gen SDK enabled for Android.
+
+See the <a href="https://github.com/ad4game/a4g-admob/tree/main/unity_package">unity_package README</a> to choose a package and for switching steps.
 
 ##  iOS
 
