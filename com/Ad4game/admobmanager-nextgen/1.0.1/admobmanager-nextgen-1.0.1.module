@@ -1,0 +1,67 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.Ad4game",
+    "module": "admobmanager-nextgen",
+    "version": "1.0.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.11.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "admobmanager-nextgen-1.0.1.aar",
+          "url": "admobmanager-nextgen-1.0.1.aar",
+          "size": 25173,
+          "sha512": "1f8a6ee11c58baa8de1375d2d54802c343fcb1d33b6ab9f7ae7da76fe895921206174661db4a50a4123740fbc7936581f3af74c45eecdacee308f941c46a61a2",
+          "sha256": "4ea84764cd6f113bcf45281d6df06d5b1ca432902f210c377926461967e8dc06",
+          "sha1": "0028a47612313c3ead5c7d16d6389845ccbc872f",
+          "md5": "1ca08c7e3e53c8a7c3b76b3ce19c022f"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.google.android.libraries.ads.mobile.sdk",
+          "module": "ads-mobile-sdk",
+          "version": {
+            "requires": "1.5.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "admobmanager-nextgen-1.0.1.aar",
+          "url": "admobmanager-nextgen-1.0.1.aar",
+          "size": 25173,
+          "sha512": "1f8a6ee11c58baa8de1375d2d54802c343fcb1d33b6ab9f7ae7da76fe895921206174661db4a50a4123740fbc7936581f3af74c45eecdacee308f941c46a61a2",
+          "sha256": "4ea84764cd6f113bcf45281d6df06d5b1ca432902f210c377926461967e8dc06",
+          "sha1": "0028a47612313c3ead5c7d16d6389845ccbc872f",
+          "md5": "1ca08c7e3e53c8a7c3b76b3ce19c022f"
+        }
+      ]
+    }
+  ]
+}

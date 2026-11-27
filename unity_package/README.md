@@ -1,6 +1,6 @@
 # Ad4Game Unity Package - AdMob Mediation Adapter
 
-> Ad4Game-1.0.3.unitypackage (legacy Google Mobile Ads SDK) · Ad4Game-NextGen-1.0.0.unitypackage (GMA Next-Gen SDK)
+> Ad4Game-1.0.4.unitypackage (legacy Google Mobile Ads SDK) · Ad4Game-NextGen-1.0.1.unitypackage (GMA Next-Gen SDK)
 
 ## Overview
 
@@ -12,25 +12,25 @@ It depends on the Android SDK setting of the [Google Mobile Ads Unity plugin](ht
 
 | Google Mobile Ads Unity plugin, Android | Ad4Game package | Android adapter |
 |---|---|---|
-| Legacy SDK (`play-services-ads`, the default) | [Ad4Game-1.0.3.unitypackage](./Ad4Game-1.0.3.unitypackage) | `com.Ad4game:admobmanager:1.1.8` |
-| GMA Next-Gen SDK enabled (`ads-mobile-sdk`) | [Ad4Game-NextGen-1.0.0.unitypackage](./Ad4Game-NextGen-1.0.0.unitypackage) | `com.Ad4game:admobmanager-nextgen:1.0.0` |
+| Legacy SDK (`play-services-ads`, the default) | [Ad4Game-1.0.4.unitypackage](./Ad4Game-1.0.4.unitypackage) | `com.Ad4game:admobmanager:1.1.9` |
+| GMA Next-Gen SDK enabled (`ads-mobile-sdk`) | [Ad4Game-NextGen-1.0.1.unitypackage](./Ad4Game-NextGen-1.0.1.unitypackage) | `com.Ad4game:admobmanager-nextgen:1.0.1` |
 
-⚠️ Package 1.0.3 does **not** work with the GMA Next-Gen SDK: you get Gradle duplicate class errors, or R8 missing class errors once `play-services-ads` is excluded. If you enable Next-Gen in the Google Mobile Ads plugin, switch to the NextGen package.
+⚠️ Package 1.0.4 does **not** work with the GMA Next-Gen SDK: you get Gradle duplicate class errors, or R8 missing class errors once `play-services-ads` is excluded. If you enable Next-Gen in the Google Mobile Ads plugin, switch to the NextGen package.
 
 Both packages write the same file, `Assets/Ad4Game/Ad4GameAdMobDependencies.xml`, so importing one replaces the other. A project never ends up with both adapters.
 
 ## Package Version Information
 
-### Ad4Game-1.0.3 (legacy SDK)
+### Ad4Game-1.0.4 (legacy SDK)
 
-- **Unity Package Version**: 1.0.3
-- **Android Adapter Version**: [1.1.8](https://github.com/ad4game/a4g-admob/) (`com.Ad4game:admobmanager`)
+- **Unity Package Version**: 1.0.4
+- **Android Adapter Version**: [1.1.9](https://github.com/ad4game/a4g-admob/) (`com.Ad4game:admobmanager`)
 - **iOS Adapter Version**: [1.0.3](https://github.com/ad4game/a4g-admob-ios) (⚡ use tag: 1.0.3 on your Podfile)
 
-### Ad4Game-NextGen-1.0.0 (GMA Next-Gen SDK)
+### Ad4Game-NextGen-1.0.1 (GMA Next-Gen SDK)
 
-- **Unity Package Version**: NextGen 1.0.0
-- **Android Adapter Version**: [1.0.0](https://github.com/ad4game/a4g-admob/) (`com.Ad4game:admobmanager-nextgen`)
+- **Unity Package Version**: NextGen 1.0.1
+- **Android Adapter Version**: [1.0.1](https://github.com/ad4game/a4g-admob/) (`com.Ad4game:admobmanager-nextgen`)
 - **iOS Adapter Version**: [1.0.3](https://github.com/ad4game/a4g-admob-ios) (unchanged; Next-Gen in the Unity plugin only affects Android)
 - **Requirements**: Google Mobile Ads Unity plugin 10.6.0 or higher with Android Next-Gen enabled, Android minimum API level 24.
 
@@ -40,21 +40,21 @@ The NextGen package does not add a Google ads SDK on Android: the Google Mobile 
 
 1. Enable Next-Gen for Android in the Google Mobile Ads Unity plugin, following [Google's guide](https://developers.google.com/admob/unity/android-next) (plugin 11.1.0+: **Assets > Google Mobile Ads > Settings**).
 2. Set **Player Settings > Android > Minimum API Level** to 24 or higher.
-3. Import `Ad4Game-NextGen-1.0.0.unitypackage` (it overwrites `Assets/Ad4Game/Ad4GameAdMobDependencies.xml`).
+3. Import `Ad4Game-NextGen-1.0.1.unitypackage` (it overwrites `Assets/Ad4Game/Ad4GameAdMobDependencies.xml`).
 4. Run **Assets > External Dependency Manager > Android Resolver > Force Resolve**.
-5. Check that `com.Ad4game:admobmanager-nextgen:1.0.0` is resolved and that neither `com.Ad4game:admobmanager` nor `play-services-ads` is present, then rebuild.
+5. Check that `com.Ad4game:admobmanager-nextgen:1.0.1` is resolved and that neither `com.Ad4game:admobmanager` nor `play-services-ads` is present, then rebuild.
 
 Your AdMob mediation configuration does not change: the Custom Event class name is still `com.ad4game.admobadapter.AdmobCustomEventManager`.
 
-To switch back to the legacy SDK, disable Next-Gen in the plugin, import `Ad4Game-1.0.3.unitypackage`, and run **Force Resolve** again.
+To switch back to the legacy SDK, disable Next-Gen in the plugin, import `Ad4Game-1.0.4.unitypackage`, and run **Force Resolve** again.
 
-## Upgrading from 1.0.2
+## Upgrading from an earlier package
 
-⚠️ Package 1.0.2 ships Android adapter 1.1.6, which crashes with `java.lang.NoSuchMethodError` on `MediationAdLoadCallback.onFailure` when the app resolves Google Mobile Ads SDK 24.9.0 or higher. Upgrade to 1.0.3:
+Packages 1.0.4 and NextGen 1.0.1 update the Android adapter so the GDPR consent extras you pass to the Ad4Game custom event reach Ad4Game. Package 1.0.2 and older also ship Android adapter 1.1.6, which crashes with `java.lang.NoSuchMethodError` on `MediationAdLoadCallback.onFailure` when the app resolves Google Mobile Ads SDK 24.9.0 or higher.
 
-1. Import `Ad4Game-1.0.3.unitypackage` (it overwrites `Assets/Ad4Game/Ad4GameAdMobDependencies.xml`).
+1. Import `Ad4Game-1.0.4.unitypackage`, or `Ad4Game-NextGen-1.0.1.unitypackage` if Next-Gen is enabled (it overwrites `Assets/Ad4Game/Ad4GameAdMobDependencies.xml`).
 2. Run **Assets > External Dependency Manager > Android Resolver > Force Resolve**.
-3. Check that `com.Ad4game:admobmanager:1.1.8` is the resolved version, then rebuild.
+3. Check that `com.Ad4game:admobmanager:1.1.9` (or `admobmanager-nextgen:1.0.1`) is the resolved version, then rebuild.
 
 ## Supported Ad Formats
 
