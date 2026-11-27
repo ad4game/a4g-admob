@@ -54,7 +54,7 @@ dependencyResolutionManagement {
 ```
 
 ## build.gradle (Module)
-⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.8**"
+⚠️ Use latest version "com.Ad4game:admobmanager:**1.1.9**"
 ```java
 // ...
 dependencies {
@@ -62,14 +62,14 @@ dependencies {
     // required google ads
     implementation 'com.google.android.gms:play-services-ads:24.1.0'
     // ⬇ Ad4Game implementation
-    implementation 'com.Ad4game:admobmanager:1.1.8'
+    implementation 'com.Ad4game:admobmanager:1.1.9'
 }
 // ...
 ```
 
 ## GMA Next-Gen SDK Support
 
-⚠️ **`com.Ad4game:admobmanager` (1.1.x, including 1.1.8) is NOT compatible with the [GMA Next-Gen SDK](https://developers.google.com/admob/android/next-gen/quick-start) (`com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk`).**
+⚠️ **`com.Ad4game:admobmanager` (1.1.x, including 1.1.9) is NOT compatible with the [GMA Next-Gen SDK](https://developers.google.com/admob/android/next-gen/quick-start) (`com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk`).**
 
 The adapter requires the legacy Google Mobile Ads SDK (`com.google.android.gms:play-services-ads`) at runtime: it depends on `play-services-ads` and loads ads through legacy classes such as `AdRequest`, `RewardedAd`, `AdManagerInterstitialAd` and `AdManagerAdView`, which the Next-Gen SDK does not include. As a result:
 
@@ -84,8 +84,8 @@ Use the dedicated Next-Gen artifact **instead of** `com.Ad4game:admobmanager`:
 
 | Your app uses | Ad4Game artifact |
 |---|---|
-| `com.google.android.gms:play-services-ads` (legacy) | `com.Ad4game:admobmanager:1.1.8` |
-| `com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk` (Next-Gen) | `com.Ad4game:admobmanager-nextgen:1.0.0` |
+| `com.google.android.gms:play-services-ads` (legacy) | `com.Ad4game:admobmanager:1.1.9` |
+| `com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk` (Next-Gen) | `com.Ad4game:admobmanager-nextgen:1.0.1` |
 
 **Requirements:** GMA Next-Gen SDK 1.5.0 or higher, minSdkVersion 24 or higher.
 
@@ -96,7 +96,7 @@ dependencies {
     // GMA Next-Gen SDK (do NOT also add play-services-ads)
     implementation 'com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.6.0'
     // ⬇ Ad4Game implementation for Next-Gen
-    implementation 'com.Ad4game:admobmanager-nextgen:1.0.0'
+    implementation 'com.Ad4game:admobmanager-nextgen:1.0.1'
 }
 ```
 
@@ -106,7 +106,16 @@ The Custom Event class name is unchanged, so your AdMob mediation configuration 
 
 ⚠️ Never add both `admobmanager` and `admobmanager-nextgen` to the same app.
 
-## admobmanager-nextgen 1.0.0 (Latest Next-Gen)
+## admobmanager-nextgen 1.0.1 (Latest Next-Gen)
+
+**Bug Fixes:**
+- ✅ GDPR consent extras now reach Ad4Game. The mediation extras you pass to the Ad4Game custom event (e.g. `npa`, `rdp`) are forwarded to Ad4Game's ad request; before, they were ignored. See [GDPR Compliance](#gdpr-compliance).
+
+**Compatibility:**
+- GMA Next-Gen SDK 1.5.0+ (tested with 1.6.0)
+- Android API 24+
+
+## admobmanager-nextgen 1.0.0
 
 **New:**
 - ✅ First release for the GMA Next-Gen SDK (`ads-mobile-sdk`). Depends only on `ads-mobile-sdk`, with no `play-services-ads`, so it builds with R8 and has no duplicate classes.
@@ -117,7 +126,17 @@ The Custom Event class name is unchanged, so your AdMob mediation configuration 
 - GMA Next-Gen SDK 1.5.0+ (tested with 1.6.0)
 - Android API 24+
 
-## Version 1.1.8 (Latest)
+## Version 1.1.9 (Latest)
+
+**Bug Fixes:**
+- ✅ GDPR consent extras now reach Ad4Game. The extras bundle you add for `AdmobCustomEventManager` (e.g. `npa`, `rdp`) is forwarded to Ad4Game's ad request; before, it was ignored. See [GDPR Compliance](#gdpr-compliance).
+
+**Compatibility:**
+- AdMob SDK 24.0.0+
+- Android API 21+
+- Compile SDK 35+
+
+## Version 1.1.8
 
 **Bug Fixes:**
 - ✅ Fixed banner ads pausing the host app/game on every refresh (every ~30s) with no matching resume. The banner's `AdListener.onAdImpression()` was incorrectly forwarding `onAdOpened()` on every impression instead of only on a real full-screen overlay open; `onAdOpened()` and `onAdImpression()` are now wired correctly.
@@ -160,9 +179,13 @@ The Custom Event class name is unchanged, so your AdMob mediation configuration 
 - Compile SDK 34+
 
 **Usage**
-**GDPR Compliance**</br>
+### GDPR Compliance
 
-If you are not using any Consent Management Platform to handle privacy issues and managing user consent with your own solution, you have to inform admob mediation and mediation partners about the consent. The following code snippet is sample for gdpr consent usage for admob mediation. If you already have the snippet like below you need to add all these extras bundles for the Ad4Game custom event adapter as well.
+If you use a Google-certified Consent Management Platform (CMP), you don't need this: the consent string reaches Ad4Game automatically.
+
+If you manage user consent with your own solution instead, you have to inform AdMob mediation and mediation partners about the consent. If you already pass consent extras such as `npa` to AdMob, pass the same bundle to the Ad4Game custom event as well. Requires `admobmanager` 1.1.9+ or `admobmanager-nextgen` 1.0.1+.
+
+Google Mobile Ads SDK (`admobmanager`):
 
 ```java
 AdRequest.Builder builder = new AdRequest.Builder();
@@ -172,6 +195,19 @@ builder.addNetworkExtrasBundle(AdMobAdapter.class, extras);
 
 // Add this for Ad4Game
 builder.addNetworkExtrasBundle(AdmobCustomEventManager.class, extras);
+```
+
+GMA Next-Gen SDK (`admobmanager-nextgen`):
+
+```java
+Bundle extras = new Bundle();
+extras.putString("npa", "1");
+
+AdRequest request = new AdRequest.Builder(adUnitId)
+        .setGoogleExtrasBundle(extras)
+        // Add this for Ad4Game
+        .putAdSourceExtrasBundle(AdmobCustomEventManager.class, extras)
+        .build();
 ```
 
 **Configure mediation settings for your AdMob ad unit**
@@ -191,8 +227,8 @@ You need to add Ad4Game placements provided by the Ad4Game team to the mediation
 
 Use the unity package file located in the <a href="https://github.com/ad4game/a4g-admob/tree/main/unity_package">unity_package</a> folder to include Ad4Game adapters in your app/game:
 
-* `Ad4Game-1.0.3.unitypackage`: Google Mobile Ads Unity plugin with the legacy Android SDK (default).
-* `Ad4Game-NextGen-1.0.0.unitypackage`: Google Mobile Ads Unity plugin with the GMA Next-Gen SDK enabled for Android.
+* `Ad4Game-1.0.4.unitypackage`: Google Mobile Ads Unity plugin with the legacy Android SDK (default).
+* `Ad4Game-NextGen-1.0.1.unitypackage`: Google Mobile Ads Unity plugin with the GMA Next-Gen SDK enabled for Android.
 
 See the <a href="https://github.com/ad4game/a4g-admob/tree/main/unity_package">unity_package README</a> to choose a package and for switching steps.
 
